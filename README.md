@@ -1,6 +1,6 @@
 # StreetCat-console
 
-## Installation guide (Local):
+## Installation guide:
 1) Install [Python 3.10](https://www.python.org/downloads/)
 2) Install [git](https://git-scm.com/downloads)
 3) Install [ffmpeg](https://ffmpeg.org/download.html)
