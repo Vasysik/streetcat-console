@@ -1,18 +1,12 @@
 import cam_viewer
 import json
 
-with open('cams.json', 'r') as file:
-    cams_json = json.loads(file.read())
+with open('streetcat_viewer/cams.json', 'r') as cams:
+    cams_json = json.loads(cams.read())
 
 while(True):
     print("Cats Cams:")
-    print(" Mr Fresh: fresh")
-    print(" Mr Despair: despair")
-    print(" Miss Sleeps: sleeps")
-    print(" Mr Snack: snack")
-    print(" Mr Shock: shock")
-    print(" Mr Sonic: sonic")
-    print(" Ducks: ducks")
+    for key in cams_json.keys(): print(key)
     
     print("Enter camera name: ", end="")
     cam_name = input()
