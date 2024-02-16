@@ -8,6 +8,7 @@
    ```
    git clone https://github.com/Vasysik/streetcat-console/
    cd .\streetcat-console\
+   git submodule update --init
    ```
 5) Install all remaining required libraries:
    ```
