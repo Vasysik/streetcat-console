@@ -1,7 +1,7 @@
 import cam_viewer
 import json
 
-with open('streetcat_viewer/cams.json', 'r') as cams:
+with open('streetcat_viewer/cams_list.json', 'r') as cams:
     cams_json = json.loads(cams.read())
 command = "connect"
 debug = True
@@ -12,25 +12,27 @@ if debug:
 
 def cams_list():
     print("\nCats Cams:")
-    for key in cams_json.keys(): print(key)
-    cam_name = input("\nEnter camera name: ")
+    for key in cams_json.keys(): print(cams_json[key]["title"], "-", key)
+    cam_group = input("\nEnter camera name: ")
     cam_number = input("Cam number: ")
-    return [cam_name, cam_number]
+    return [cam_group, cam_number]
 
 while(True):
     responce = ""
     if command == "connect":
         cam = cams_list()
         player = cam_viewer.playback(command = "ffplay", 
-                            parameters = "", 
+                            parameters = "",
                             cams_json = cams_json,
-                            cam_name = cam[0], 
+                            cam_group = cam[0], 
                             cam_number = int(cam[1]),
-                            use_text = True,
-                            font_file = "./CALIBRI.TTF")
+                            use_title = True,
+                            font_file = "./CALIBRI.TTF",
+                            custom_title = cams_json[cam[0]]["title"] + " - " + cam[1])
         responce = player[1]
-        print(responce)
-        player[0].wait()
+        print(f"\n{responce}")
+        try: player[0].wait()
+        except: None
         print(f"\nCam {cam[0]} {cam[1]} is closed")
     elif command == "data":
         cam = cams_list()
