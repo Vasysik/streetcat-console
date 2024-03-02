@@ -14,8 +14,8 @@ def cams_list():
     print("\nCats Cams:")
     for key in cams_json.keys(): print(cams_json[key]["title"], "-", key)
     cam_group = input("\nEnter camera name: ")
-    cam_number = input("Cam number: ")
-    return [cam_group, cam_number]
+    cam_id = input("Cam ID: ")
+    return [cam_group, cam_id]
 
 while(True):
     responce = ""
@@ -25,7 +25,7 @@ while(True):
                             parameters = "",
                             cams_json = cams_json,
                             cam_group = cam[0], 
-                            cam_number = int(cam[1]),
+                            cam_id = int(cam[1]),
                             use_title = True,
                             font_file = "./CALIBRI.TTF",
                             custom_title = cams_json[cam[0]]["title"] + " - " + cam[1])
@@ -40,7 +40,7 @@ while(True):
         print(f"\nURL: {data[0]}\nEnabled: {data[1]}\nResponce: {data[2]}\n")
     elif command == "url":
         url = input("\nEnter URL: ")
-        print(f"Available: {cam_viewer.url_available(url)}\n")
+        print(f"Available: {cam_viewer.url_available(url)}")
     elif command == "time":
         input("\nPress enter to display time...")
         print(f"Current time: {cam_viewer.current_time()}")
